@@ -1,4 +1,4 @@
 <Solution>
   <Project Path="Lista1/Lista1.csproj" />
-  <Project Path="Lista2/Lista2.csproj" />
+  <Project Path="Lista2/Kalkulator.csproj" />
 </Solution>
