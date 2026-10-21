@@ -1,0 +1,23 @@
+﻿<Window x:Class="Lista2.statkiTwo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lista2"
+        mc:Ignorable="d"
+        Title="Player 2" Height="540" Width="900">
+
+    <StackPanel Margin="10">
+        <TextBlock x:Name="Status" Text="Black on your board = ship | Click enemy board to fire | Red = hit | LightGray = miss" FontSize="18" HorizontalAlignment="Center"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <StackPanel Margin="10">
+                <TextBlock Text="MY SHIPS" HorizontalAlignment="Center"/>
+                <UniformGrid x:Name="MyBoard" Rows="10" Columns="10" Width="400" Height="400"/>
+            </StackPanel>
+            <StackPanel Margin="10">
+                <TextBlock Text="ENEMY" HorizontalAlignment="Center"/>
+                <UniformGrid x:Name="EnemyBoard" Rows="10" Columns="10" Width="400" Height="400"/>
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>
+</Window>

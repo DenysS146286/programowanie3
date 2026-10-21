@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace Kolko_Kryrzyk
+namespace Lista2
 {
     /// <summary>
     /// Interaction logic for App.xaml
