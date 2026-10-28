@@ -25,6 +25,6 @@
         <ComboBoxItem Content="Semestr 8"/>
         <ComboBoxItem Content="Semestr 9"/>
         <ComboBoxItem Content="Semestr 10"/>
-        <Button Content="Dodaj studenta" Click="Button_Click"/>
+        <Button Content="Dodaj studenta"/>
     </StackPanel>
 </Window>
