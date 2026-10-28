@@ -1,5 +1,4 @@
-﻿
-using Statki;
+﻿using Statki;
 using System.Windows;
 
 namespace Lista2
