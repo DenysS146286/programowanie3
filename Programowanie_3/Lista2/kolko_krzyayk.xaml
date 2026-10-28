@@ -1,22 +1,23 @@
 ﻿<Window x:Class="Lista2.kolko_krzyayk"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Lista2"
-        mc:Ignorable="d"
-        Title="kolko_krzyayk" Height="450" Width="400">
-    <Grid Margin="10">
+        Title="Kółko i krzyżyk" Height="480" Width="400">
+    <DockPanel Margin="10">
+        <TextBlock DockPanel.Dock="Top" Text="{Binding Status}" FontSize="20"
+                   HorizontalAlignment="Center" Margin="5"/>
+        <Button DockPanel.Dock="Bottom" Content="Nowa gra"
+                Command="{Binding NewGameCommand}" Margin="5" Height="30"/>
+
         <UniformGrid Rows="3" Columns="3">
-            <Button x:Name="b1" Click="Button_Click" FontSize="30"/>
-            <Button x:Name="b2" Click="Button_Click" FontSize="30"/>
-            <Button x:Name="b3" Click="Button_Click" FontSize="30"/>
-            <Button x:Name="b4" Click="Button_Click" FontSize="30"/>
-            <Button x:Name="b5" Click="Button_Click" FontSize="30"/>
-            <Button x:Name="b6" Click="Button_Click" FontSize="30"/>
-            <Button x:Name="b7" Click="Button_Click" FontSize="30"/>
-            <Button x:Name="b8" Click="Button_Click" FontSize="30"/>
-            <Button x:Name="b9" Click="Button_Click" FontSize="30"/>
+            <Button Content="{Binding Cells[0]}" CommandParameter="0" FontSize="30"/>
+            <Button Content="{Binding Cells[1]}" CommandParameter="1" FontSize="30"/>
+            <Button Content="{Binding Cells[2]}" CommandParameter="2" FontSize="30"/>
+            <Button Content="{Binding Cells[3]}" CommandParameter="3" FontSize="30"/>
+            <Button Content="{Binding Cells[4]}" CommandParameter="4" FontSize="30"/>
+            <Button Content="{Binding Cells[5]}" CommandParameter="5" FontSize="30"/>
+            <Button Content="{Binding Cells[6]}" CommandParameter="6" FontSize="30"/>
+            <Button Content="{Binding Cells[7]}" CommandParameter="7" FontSize="30"/>
+            <Button Content="{Binding Cells[8]}" CommandParameter="8" FontSize="30"/>
         </UniformGrid>
-    </Grid>
+    </DockPanel>
 </Window>

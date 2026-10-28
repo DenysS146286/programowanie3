@@ -1,5 +1,4 @@
-﻿using Statki;
-using System.Windows;
+﻿using System.Windows;
 
 namespace Lista2
 {
@@ -8,21 +7,8 @@ namespace Lista2
         public statkiOne()
         {
             InitializeComponent();
-
-            GameData.Player1 = this;
-
-            GameData.CreateBoard(MyBoard, 1, false);
-            GameData.CreateBoard(EnemyBoard, 1, true);
-
-            RefreshBoards();
-
-            statkiTwo second = new statkiTwo();
-            second.Show();
-        }
-
-        public void RefreshBoards()
-        {
-            GameData.RefreshBoards(MyBoard, EnemyBoard, 1);
+            DataContext = GameData.Player1;
+            new statkiTwo().Show();
         }
     }
 }
