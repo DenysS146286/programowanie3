@@ -1,0 +1,42 @@
+﻿<Window x:Class="Lista2.WorkingKolkoKrzyzyk"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Kolko i krzyzyk" Height="450" Width="450">
+
+    <Grid Margin="10">
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock x:Name="status"
+                   Grid.Row="0"
+                   Grid.ColumnSpan="3"
+                   Text="Ruch gracza: X"
+                   FontSize="25"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"/>
+
+        <Button Grid.Row="1" Grid.Column="0" Margin="3" FontSize="40" Click="Button_Click"/>
+        <Button Grid.Row="1" Grid.Column="1" Margin="3" FontSize="40" Click="Button_Click"/>
+        <Button Grid.Row="1" Grid.Column="2" Margin="3" FontSize="40" Click="Button_Click"/>
+
+        <Button Grid.Row="2" Grid.Column="0" Margin="3" FontSize="40" Click="Button_Click"/>
+        <Button Grid.Row="2" Grid.Column="1" Margin="3" FontSize="40" Click="Button_Click"/>
+        <Button Grid.Row="2" Grid.Column="2" Margin="3" FontSize="40" Click="Button_Click"/>
+
+        <Button Grid.Row="3" Grid.Column="0" Margin="3" FontSize="40" Click="Button_Click"/>
+        <Button Grid.Row="3" Grid.Column="1" Margin="3" FontSize="40" Click="Button_Click"/>
+        <Button Grid.Row="3" Grid.Column="2" Margin="3" FontSize="40" Click="Button_Click"/>
+
+    </Grid>
+</Window>
