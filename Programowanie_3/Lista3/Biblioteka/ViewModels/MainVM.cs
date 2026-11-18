@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Biblioteka.Models;
+using Biblioteka.Services;
 
 namespace Biblioteka.ViewModels
 {
@@ -19,5 +20,15 @@ namespace Biblioteka.ViewModels
         Zadanie 1.5:
         bez NotifyCanExecuteChangedFor przyczisk Zapisz nie zmienia stanu po zaznaczeniu/odznaczeniu ksiazki, bo toolKit nie uzywa CommandManager
         */
+
+        private readonly InMemoryKsiazkaRepository ksiazkaRepo;
+        private readonly InMemoryKategoriaRepository kategoriaRepo;
+
+        //VM dostaje repo z zewnatrz, sam ich nie tworzy
+        public MainVM(InMemoryKsiazkaRepository ksiazkaRepo, InMemoryKategoriaRepository kategoriaRepo)
+        {
+            this.ksiazkaRepo = ksiazkaRepo;
+            this.kategoriaRepo = kategoriaRepo;
+        }
     }
 }
