@@ -19,7 +19,7 @@ namespace Biblioteka
             IKsiazkaRepository ksiazkaRepo = new InMemoryKsiazkaRepository();
 
             MainWindow okno = new MainWindow();
-            okno.DataContext = new MainVM(ksiazkaRepo, kategoriaRepo);
+            okno.DataContext = new MainVM(ksiazkaRepo, kategoriaRepo, new MessageBoxDailogService());
             okno.Show();
         }
     }

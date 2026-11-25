@@ -11,18 +11,21 @@ namespace Biblioteka.ViewModels
         // ===== Repozytoria =====
         private readonly IKsiazkaRepository ksiazkaRepo;
         private readonly IKategoriaRepository kategoriaRepo;
+        private readonly IDialogService dialog;
 
         // VM dostaje repo z zewnatrz przez interfejs, sam ich nie tworzy.
         // Nie wie, skad pochodza dane - zrodlo mozna podmienic w App.xaml.cs.
-        public MainVM(IKsiazkaRepository ksiazkaRepo, IKategoriaRepository kategoriaRepo)
+        public MainVM(IKsiazkaRepository ksiazkaRepo, IKategoriaRepository kategoriaRepo, IDialogService dialog)
         {
             this.ksiazkaRepo = ksiazkaRepo;
             this.kategoriaRepo = kategoriaRepo;
+            this.dialog = dialog;
         }
 
         // ===== Wlasciwosci (generator robi z pol publiczne wlasciwosci) =====
         [ObservableProperty] private ObservableCollection<Ksiazka> ksiazki = new();
         [ObservableProperty] private ObservableCollection<Kategoria> kategorie = new();
+        [ObservableProperty] private string komunikat = "Gotowe";
 
         [ObservableProperty]
         [NotifyCanExecuteChangedFor(nameof(ZapiszCommand))]
@@ -33,22 +36,38 @@ namespace Biblioteka.ViewModels
         [RelayCommand]
         private async Task Odswiez()
         {
-            Ksiazki = new ObservableCollection<Ksiazka>(await ksiazkaRepo.GetAllAsync());
-            Kategorie = new ObservableCollection<Kategoria>(await kategoriaRepo.GetAllAsync());
+            try
+            {
+                Ksiazki = new ObservableCollection<Ksiazka>(await ksiazkaRepo.GetAllAsync());
+                Kategorie = new ObservableCollection<Kategoria>(await kategoriaRepo.GetAllAsync());
+                Komunikat = $"Wczytano {Ksiazki.Count} ksiazek";
+            }
+            catch (Exception ex)
+            {
+                Komunikat = "Blad wczytywania danych: " + ex.Message;
+            }
         }
 
         [RelayCommand]
         private async Task Dodaj()
         {
-            var nowa = new Ksiazka
+            try
             {
-                Tytul = "Nowa ksiazka",
-                Autor = "?",
-                KategoriaId = Kategorie.FirstOrDefault()?.Id ?? 1
-            };
-            await ksiazkaRepo.AddAsync(nowa);
-            await Odswiez();
-            WybranaKsiazka = Ksiazki.FirstOrDefault(k => k.Id == nowa.Id);
+                var nowa = new Ksiazka
+                {
+                    Tytul = "Nowa ksiazka",
+                    Autor = "?",
+                    KategoriaId = Kategorie.FirstOrDefault()?.Id ?? 1
+                };
+                await ksiazkaRepo.AddAsync(nowa);
+                await Odswiez();
+                WybranaKsiazka = Ksiazki.FirstOrDefault(k => k.Id == nowa.Id);
+                Komunikat = "Dodano nowa ksiazke";
+            }
+            catch (Exception ex)
+            {
+                Komunikat = "Blad dodawania ksiazki: " + ex.Message;
+            }
         }
 
         // 4
@@ -58,15 +77,31 @@ namespace Biblioteka.ViewModels
             WybranaKsiazka!.Waliduj(); // ValidateAllProperties
             if (WybranaKsiazka.HasErrors) return;
 
-            await ksiazkaRepo.UpdateAsync(WybranaKsiazka!);
-            await Odswiez();
+            try
+            {
+                await ksiazkaRepo.UpdateAsync(WybranaKsiazka!);
+                await Odswiez();
+            }
+            catch (Exception ex)
+            {
+                Komunikat = "Blad zapisu ksiazki: " + ex.Message;
+            }
         }
 
+        // 4.6 potwierdzienie przed usunieciem ksiazki
         [RelayCommand(CanExecute = nameof(CzyMoznaUsunac))]
         private async Task Usun()
         {
-            await ksiazkaRepo.DeleteAsync(WybranaKsiazka!.Id);
-            await Odswiez();
+            try
+            {
+                await ksiazkaRepo.DeleteAsync(WybranaKsiazka!.Id);
+                await Odswiez();
+                Komunikat = "Usunieto ksiazke";
+            }
+            catch (Exception ex)
+            {
+                Komunikat = "Blad usuwania ksiazki: " + ex.Message;
+            }
         }
 
         private bool CzyMoznaZapisac() { 
