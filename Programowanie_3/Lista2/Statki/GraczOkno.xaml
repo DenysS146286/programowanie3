@@ -1,0 +1,327 @@
+﻿<Window x:Class="Lista2.GraczOkno"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Lista2"
+        Title="{Binding Tytul}" Height="750" Width="950"
+        MinHeight="700" MinWidth="900">
+
+    <Window.Resources>
+        <local:KolorConverter x:Key="KolorConverter"/>
+    </Window.Resources>
+
+    <Grid Margin="10">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Czarny = statek | Czerwony = trafienie | Jasnoszary = pudlo"
+                   FontSize="26"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   Margin="5"/>
+
+        <Grid Grid.Row="1">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0" Margin="5">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="MOJA PLANSZA"
+                           FontSize="18"
+                           HorizontalAlignment="Center"
+                           Margin="5"/>
+
+                <Grid Grid.Row="1" IsEnabled="{Binding MogeUstawiac}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Row="0" Grid.Column="0" Margin="1" Tag="0" Background="{Binding Moja[0], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="0" Grid.Column="1" Margin="1" Tag="1" Background="{Binding Moja[1], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="0" Grid.Column="2" Margin="1" Tag="2" Background="{Binding Moja[2], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="0" Grid.Column="3" Margin="1" Tag="3" Background="{Binding Moja[3], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="0" Grid.Column="4" Margin="1" Tag="4" Background="{Binding Moja[4], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="0" Grid.Column="5" Margin="1" Tag="5" Background="{Binding Moja[5], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="0" Grid.Column="6" Margin="1" Tag="6" Background="{Binding Moja[6], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="0" Grid.Column="7" Margin="1" Tag="7" Background="{Binding Moja[7], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="0" Grid.Column="8" Margin="1" Tag="8" Background="{Binding Moja[8], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="0" Grid.Column="9" Margin="1" Tag="9" Background="{Binding Moja[9], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="1" Grid.Column="0" Margin="1" Tag="10" Background="{Binding Moja[10], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="1" Grid.Column="1" Margin="1" Tag="11" Background="{Binding Moja[11], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="1" Grid.Column="2" Margin="1" Tag="12" Background="{Binding Moja[12], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="1" Grid.Column="3" Margin="1" Tag="13" Background="{Binding Moja[13], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="1" Grid.Column="4" Margin="1" Tag="14" Background="{Binding Moja[14], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="1" Grid.Column="5" Margin="1" Tag="15" Background="{Binding Moja[15], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="1" Grid.Column="6" Margin="1" Tag="16" Background="{Binding Moja[16], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="1" Grid.Column="7" Margin="1" Tag="17" Background="{Binding Moja[17], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="1" Grid.Column="8" Margin="1" Tag="18" Background="{Binding Moja[18], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="1" Grid.Column="9" Margin="1" Tag="19" Background="{Binding Moja[19], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="2" Grid.Column="0" Margin="1" Tag="20" Background="{Binding Moja[20], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="2" Grid.Column="1" Margin="1" Tag="21" Background="{Binding Moja[21], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="2" Grid.Column="2" Margin="1" Tag="22" Background="{Binding Moja[22], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="2" Grid.Column="3" Margin="1" Tag="23" Background="{Binding Moja[23], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="2" Grid.Column="4" Margin="1" Tag="24" Background="{Binding Moja[24], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="2" Grid.Column="5" Margin="1" Tag="25" Background="{Binding Moja[25], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="2" Grid.Column="6" Margin="1" Tag="26" Background="{Binding Moja[26], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="2" Grid.Column="7" Margin="1" Tag="27" Background="{Binding Moja[27], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="2" Grid.Column="8" Margin="1" Tag="28" Background="{Binding Moja[28], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="2" Grid.Column="9" Margin="1" Tag="29" Background="{Binding Moja[29], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="3" Grid.Column="0" Margin="1" Tag="30" Background="{Binding Moja[30], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="3" Grid.Column="1" Margin="1" Tag="31" Background="{Binding Moja[31], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="3" Grid.Column="2" Margin="1" Tag="32" Background="{Binding Moja[32], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="3" Grid.Column="3" Margin="1" Tag="33" Background="{Binding Moja[33], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="3" Grid.Column="4" Margin="1" Tag="34" Background="{Binding Moja[34], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="3" Grid.Column="5" Margin="1" Tag="35" Background="{Binding Moja[35], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="3" Grid.Column="6" Margin="1" Tag="36" Background="{Binding Moja[36], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="3" Grid.Column="7" Margin="1" Tag="37" Background="{Binding Moja[37], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="3" Grid.Column="8" Margin="1" Tag="38" Background="{Binding Moja[38], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="3" Grid.Column="9" Margin="1" Tag="39" Background="{Binding Moja[39], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="4" Grid.Column="0" Margin="1" Tag="40" Background="{Binding Moja[40], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="4" Grid.Column="1" Margin="1" Tag="41" Background="{Binding Moja[41], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="4" Grid.Column="2" Margin="1" Tag="42" Background="{Binding Moja[42], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="4" Grid.Column="3" Margin="1" Tag="43" Background="{Binding Moja[43], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="4" Grid.Column="4" Margin="1" Tag="44" Background="{Binding Moja[44], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="4" Grid.Column="5" Margin="1" Tag="45" Background="{Binding Moja[45], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="4" Grid.Column="6" Margin="1" Tag="46" Background="{Binding Moja[46], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="4" Grid.Column="7" Margin="1" Tag="47" Background="{Binding Moja[47], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="4" Grid.Column="8" Margin="1" Tag="48" Background="{Binding Moja[48], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="4" Grid.Column="9" Margin="1" Tag="49" Background="{Binding Moja[49], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="5" Grid.Column="0" Margin="1" Tag="50" Background="{Binding Moja[50], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="5" Grid.Column="1" Margin="1" Tag="51" Background="{Binding Moja[51], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="5" Grid.Column="2" Margin="1" Tag="52" Background="{Binding Moja[52], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="5" Grid.Column="3" Margin="1" Tag="53" Background="{Binding Moja[53], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="5" Grid.Column="4" Margin="1" Tag="54" Background="{Binding Moja[54], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="5" Grid.Column="5" Margin="1" Tag="55" Background="{Binding Moja[55], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="5" Grid.Column="6" Margin="1" Tag="56" Background="{Binding Moja[56], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="5" Grid.Column="7" Margin="1" Tag="57" Background="{Binding Moja[57], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="5" Grid.Column="8" Margin="1" Tag="58" Background="{Binding Moja[58], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="5" Grid.Column="9" Margin="1" Tag="59" Background="{Binding Moja[59], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="6" Grid.Column="0" Margin="1" Tag="60" Background="{Binding Moja[60], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="6" Grid.Column="1" Margin="1" Tag="61" Background="{Binding Moja[61], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="6" Grid.Column="2" Margin="1" Tag="62" Background="{Binding Moja[62], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="6" Grid.Column="3" Margin="1" Tag="63" Background="{Binding Moja[63], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="6" Grid.Column="4" Margin="1" Tag="64" Background="{Binding Moja[64], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="6" Grid.Column="5" Margin="1" Tag="65" Background="{Binding Moja[65], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="6" Grid.Column="6" Margin="1" Tag="66" Background="{Binding Moja[66], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="6" Grid.Column="7" Margin="1" Tag="67" Background="{Binding Moja[67], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="6" Grid.Column="8" Margin="1" Tag="68" Background="{Binding Moja[68], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="6" Grid.Column="9" Margin="1" Tag="69" Background="{Binding Moja[69], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="7" Grid.Column="0" Margin="1" Tag="70" Background="{Binding Moja[70], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="7" Grid.Column="1" Margin="1" Tag="71" Background="{Binding Moja[71], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="7" Grid.Column="2" Margin="1" Tag="72" Background="{Binding Moja[72], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="7" Grid.Column="3" Margin="1" Tag="73" Background="{Binding Moja[73], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="7" Grid.Column="4" Margin="1" Tag="74" Background="{Binding Moja[74], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="7" Grid.Column="5" Margin="1" Tag="75" Background="{Binding Moja[75], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="7" Grid.Column="6" Margin="1" Tag="76" Background="{Binding Moja[76], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="7" Grid.Column="7" Margin="1" Tag="77" Background="{Binding Moja[77], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="7" Grid.Column="8" Margin="1" Tag="78" Background="{Binding Moja[78], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="7" Grid.Column="9" Margin="1" Tag="79" Background="{Binding Moja[79], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="8" Grid.Column="0" Margin="1" Tag="80" Background="{Binding Moja[80], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="8" Grid.Column="1" Margin="1" Tag="81" Background="{Binding Moja[81], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="8" Grid.Column="2" Margin="1" Tag="82" Background="{Binding Moja[82], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="8" Grid.Column="3" Margin="1" Tag="83" Background="{Binding Moja[83], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="8" Grid.Column="4" Margin="1" Tag="84" Background="{Binding Moja[84], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="8" Grid.Column="5" Margin="1" Tag="85" Background="{Binding Moja[85], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="8" Grid.Column="6" Margin="1" Tag="86" Background="{Binding Moja[86], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="8" Grid.Column="7" Margin="1" Tag="87" Background="{Binding Moja[87], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="8" Grid.Column="8" Margin="1" Tag="88" Background="{Binding Moja[88], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="8" Grid.Column="9" Margin="1" Tag="89" Background="{Binding Moja[89], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="9" Grid.Column="0" Margin="1" Tag="90" Background="{Binding Moja[90], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="9" Grid.Column="1" Margin="1" Tag="91" Background="{Binding Moja[91], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="9" Grid.Column="2" Margin="1" Tag="92" Background="{Binding Moja[92], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="9" Grid.Column="3" Margin="1" Tag="93" Background="{Binding Moja[93], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="9" Grid.Column="4" Margin="1" Tag="94" Background="{Binding Moja[94], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="9" Grid.Column="5" Margin="1" Tag="95" Background="{Binding Moja[95], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="9" Grid.Column="6" Margin="1" Tag="96" Background="{Binding Moja[96], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="9" Grid.Column="7" Margin="1" Tag="97" Background="{Binding Moja[97], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="9" Grid.Column="8" Margin="1" Tag="98" Background="{Binding Moja[98], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                    <Button Grid.Row="9" Grid.Column="9" Margin="1" Tag="99" Background="{Binding Moja[99], Converter={StaticResource KolorConverter}}" Click="MojaPlansza_Click"/>
+                </Grid>
+
+            </Grid>
+
+            <Grid Grid.Column="1" Margin="5">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="PLANSZA PRZECIWNIKA"
+                           FontSize="18"
+                           HorizontalAlignment="Center"
+                           Margin="5"/>
+
+                <Grid Grid.Row="1" IsEnabled="{Binding MojaTura}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Row="0" Grid.Column="0" Margin="1" Tag="0" Background="{Binding Przeciwnika[0], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="0" Grid.Column="1" Margin="1" Tag="1" Background="{Binding Przeciwnika[1], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="0" Grid.Column="2" Margin="1" Tag="2" Background="{Binding Przeciwnika[2], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="0" Grid.Column="3" Margin="1" Tag="3" Background="{Binding Przeciwnika[3], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="0" Grid.Column="4" Margin="1" Tag="4" Background="{Binding Przeciwnika[4], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="0" Grid.Column="5" Margin="1" Tag="5" Background="{Binding Przeciwnika[5], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="0" Grid.Column="6" Margin="1" Tag="6" Background="{Binding Przeciwnika[6], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="0" Grid.Column="7" Margin="1" Tag="7" Background="{Binding Przeciwnika[7], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="0" Grid.Column="8" Margin="1" Tag="8" Background="{Binding Przeciwnika[8], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="0" Grid.Column="9" Margin="1" Tag="9" Background="{Binding Przeciwnika[9], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="1" Grid.Column="0" Margin="1" Tag="10" Background="{Binding Przeciwnika[10], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="1" Grid.Column="1" Margin="1" Tag="11" Background="{Binding Przeciwnika[11], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="1" Grid.Column="2" Margin="1" Tag="12" Background="{Binding Przeciwnika[12], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="1" Grid.Column="3" Margin="1" Tag="13" Background="{Binding Przeciwnika[13], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="1" Grid.Column="4" Margin="1" Tag="14" Background="{Binding Przeciwnika[14], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="1" Grid.Column="5" Margin="1" Tag="15" Background="{Binding Przeciwnika[15], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="1" Grid.Column="6" Margin="1" Tag="16" Background="{Binding Przeciwnika[16], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="1" Grid.Column="7" Margin="1" Tag="17" Background="{Binding Przeciwnika[17], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="1" Grid.Column="8" Margin="1" Tag="18" Background="{Binding Przeciwnika[18], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="1" Grid.Column="9" Margin="1" Tag="19" Background="{Binding Przeciwnika[19], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="2" Grid.Column="0" Margin="1" Tag="20" Background="{Binding Przeciwnika[20], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="2" Grid.Column="1" Margin="1" Tag="21" Background="{Binding Przeciwnika[21], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="2" Grid.Column="2" Margin="1" Tag="22" Background="{Binding Przeciwnika[22], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="2" Grid.Column="3" Margin="1" Tag="23" Background="{Binding Przeciwnika[23], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="2" Grid.Column="4" Margin="1" Tag="24" Background="{Binding Przeciwnika[24], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="2" Grid.Column="5" Margin="1" Tag="25" Background="{Binding Przeciwnika[25], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="2" Grid.Column="6" Margin="1" Tag="26" Background="{Binding Przeciwnika[26], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="2" Grid.Column="7" Margin="1" Tag="27" Background="{Binding Przeciwnika[27], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="2" Grid.Column="8" Margin="1" Tag="28" Background="{Binding Przeciwnika[28], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="2" Grid.Column="9" Margin="1" Tag="29" Background="{Binding Przeciwnika[29], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="3" Grid.Column="0" Margin="1" Tag="30" Background="{Binding Przeciwnika[30], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="3" Grid.Column="1" Margin="1" Tag="31" Background="{Binding Przeciwnika[31], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="3" Grid.Column="2" Margin="1" Tag="32" Background="{Binding Przeciwnika[32], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="3" Grid.Column="3" Margin="1" Tag="33" Background="{Binding Przeciwnika[33], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="3" Grid.Column="4" Margin="1" Tag="34" Background="{Binding Przeciwnika[34], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="3" Grid.Column="5" Margin="1" Tag="35" Background="{Binding Przeciwnika[35], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="3" Grid.Column="6" Margin="1" Tag="36" Background="{Binding Przeciwnika[36], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="3" Grid.Column="7" Margin="1" Tag="37" Background="{Binding Przeciwnika[37], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="3" Grid.Column="8" Margin="1" Tag="38" Background="{Binding Przeciwnika[38], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="3" Grid.Column="9" Margin="1" Tag="39" Background="{Binding Przeciwnika[39], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="4" Grid.Column="0" Margin="1" Tag="40" Background="{Binding Przeciwnika[40], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="4" Grid.Column="1" Margin="1" Tag="41" Background="{Binding Przeciwnika[41], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="4" Grid.Column="2" Margin="1" Tag="42" Background="{Binding Przeciwnika[42], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="4" Grid.Column="3" Margin="1" Tag="43" Background="{Binding Przeciwnika[43], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="4" Grid.Column="4" Margin="1" Tag="44" Background="{Binding Przeciwnika[44], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="4" Grid.Column="5" Margin="1" Tag="45" Background="{Binding Przeciwnika[45], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="4" Grid.Column="6" Margin="1" Tag="46" Background="{Binding Przeciwnika[46], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="4" Grid.Column="7" Margin="1" Tag="47" Background="{Binding Przeciwnika[47], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="4" Grid.Column="8" Margin="1" Tag="48" Background="{Binding Przeciwnika[48], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="4" Grid.Column="9" Margin="1" Tag="49" Background="{Binding Przeciwnika[49], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="5" Grid.Column="0" Margin="1" Tag="50" Background="{Binding Przeciwnika[50], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="5" Grid.Column="1" Margin="1" Tag="51" Background="{Binding Przeciwnika[51], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="5" Grid.Column="2" Margin="1" Tag="52" Background="{Binding Przeciwnika[52], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="5" Grid.Column="3" Margin="1" Tag="53" Background="{Binding Przeciwnika[53], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="5" Grid.Column="4" Margin="1" Tag="54" Background="{Binding Przeciwnika[54], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="5" Grid.Column="5" Margin="1" Tag="55" Background="{Binding Przeciwnika[55], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="5" Grid.Column="6" Margin="1" Tag="56" Background="{Binding Przeciwnika[56], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="5" Grid.Column="7" Margin="1" Tag="57" Background="{Binding Przeciwnika[57], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="5" Grid.Column="8" Margin="1" Tag="58" Background="{Binding Przeciwnika[58], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="5" Grid.Column="9" Margin="1" Tag="59" Background="{Binding Przeciwnika[59], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="6" Grid.Column="0" Margin="1" Tag="60" Background="{Binding Przeciwnika[60], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="6" Grid.Column="1" Margin="1" Tag="61" Background="{Binding Przeciwnika[61], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="6" Grid.Column="2" Margin="1" Tag="62" Background="{Binding Przeciwnika[62], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="6" Grid.Column="3" Margin="1" Tag="63" Background="{Binding Przeciwnika[63], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="6" Grid.Column="4" Margin="1" Tag="64" Background="{Binding Przeciwnika[64], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="6" Grid.Column="5" Margin="1" Tag="65" Background="{Binding Przeciwnika[65], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="6" Grid.Column="6" Margin="1" Tag="66" Background="{Binding Przeciwnika[66], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="6" Grid.Column="7" Margin="1" Tag="67" Background="{Binding Przeciwnika[67], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="6" Grid.Column="8" Margin="1" Tag="68" Background="{Binding Przeciwnika[68], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="6" Grid.Column="9" Margin="1" Tag="69" Background="{Binding Przeciwnika[69], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="7" Grid.Column="0" Margin="1" Tag="70" Background="{Binding Przeciwnika[70], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="7" Grid.Column="1" Margin="1" Tag="71" Background="{Binding Przeciwnika[71], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="7" Grid.Column="2" Margin="1" Tag="72" Background="{Binding Przeciwnika[72], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="7" Grid.Column="3" Margin="1" Tag="73" Background="{Binding Przeciwnika[73], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="7" Grid.Column="4" Margin="1" Tag="74" Background="{Binding Przeciwnika[74], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="7" Grid.Column="5" Margin="1" Tag="75" Background="{Binding Przeciwnika[75], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="7" Grid.Column="6" Margin="1" Tag="76" Background="{Binding Przeciwnika[76], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="7" Grid.Column="7" Margin="1" Tag="77" Background="{Binding Przeciwnika[77], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="7" Grid.Column="8" Margin="1" Tag="78" Background="{Binding Przeciwnika[78], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="7" Grid.Column="9" Margin="1" Tag="79" Background="{Binding Przeciwnika[79], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="8" Grid.Column="0" Margin="1" Tag="80" Background="{Binding Przeciwnika[80], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="8" Grid.Column="1" Margin="1" Tag="81" Background="{Binding Przeciwnika[81], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="8" Grid.Column="2" Margin="1" Tag="82" Background="{Binding Przeciwnika[82], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="8" Grid.Column="3" Margin="1" Tag="83" Background="{Binding Przeciwnika[83], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="8" Grid.Column="4" Margin="1" Tag="84" Background="{Binding Przeciwnika[84], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="8" Grid.Column="5" Margin="1" Tag="85" Background="{Binding Przeciwnika[85], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="8" Grid.Column="6" Margin="1" Tag="86" Background="{Binding Przeciwnika[86], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="8" Grid.Column="7" Margin="1" Tag="87" Background="{Binding Przeciwnika[87], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="8" Grid.Column="8" Margin="1" Tag="88" Background="{Binding Przeciwnika[88], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="8" Grid.Column="9" Margin="1" Tag="89" Background="{Binding Przeciwnika[89], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="9" Grid.Column="0" Margin="1" Tag="90" Background="{Binding Przeciwnika[90], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="9" Grid.Column="1" Margin="1" Tag="91" Background="{Binding Przeciwnika[91], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="9" Grid.Column="2" Margin="1" Tag="92" Background="{Binding Przeciwnika[92], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="9" Grid.Column="3" Margin="1" Tag="93" Background="{Binding Przeciwnika[93], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="9" Grid.Column="4" Margin="1" Tag="94" Background="{Binding Przeciwnika[94], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="9" Grid.Column="5" Margin="1" Tag="95" Background="{Binding Przeciwnika[95], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="9" Grid.Column="6" Margin="1" Tag="96" Background="{Binding Przeciwnika[96], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="9" Grid.Column="7" Margin="1" Tag="97" Background="{Binding Przeciwnika[97], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="9" Grid.Column="8" Margin="1" Tag="98" Background="{Binding Przeciwnika[98], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                    <Button Grid.Row="9" Grid.Column="9" Margin="1" Tag="99" Background="{Binding Przeciwnika[99], Converter={StaticResource KolorConverter}, ConverterParameter=ukryj}" Click="Przeciwnik_Click"/>
+                </Grid>
+
+            </Grid>
+
+        </Grid>
+
+        <TextBlock Grid.Row="2"
+                   Text="{Binding Status}"
+                   FontSize="18"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   Margin="10"/>
+
+    </Grid>
+</Window>
