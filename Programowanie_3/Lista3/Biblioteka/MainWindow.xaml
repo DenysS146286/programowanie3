@@ -1,0 +1,89 @@
+﻿<Window x:Class="Biblioteka.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Biblioteka"
+        mc:Ignorable="d"
+        Loaded="Window_Loaded"
+        Title="Biblioteka" Height="500" Width="900" FontSize="14">
+    <!--4.4-->
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="Validation.ErrorTemplate">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Border BorderBrush="Red" BorderThickness="2">
+                            <AdornedElementPlaceholder/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/> 
+        </Grid.RowDefinitions>
+
+            <!-- 3.2 lista ksiazek -->
+        <ListView Grid.Column="0"
+        ItemsSource="{Binding Ksiazki}"
+        SelectedItem="{Binding WybranaKsiazka}"
+        Margin="0,0,10,0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                <Run Text="{Binding Tytul}" FontWeight="Bold"/>
+                <Run Text=" - "/>
+                <Run Text="{Binding Autor}"/>
+                <Run Text=" ("/>
+                <Run Text="{Binding KategoriaNazwa}"/>
+                <Run Text=")"/>
+                    </TextBlock>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <!-- 3.3 panel szczegolow (master-detail) -->
+        <StackPanel Grid.Column="1">
+            <TextBlock Text="Tytul"/>
+            <TextBox Text="{Binding WybranaKsiazka.Tytul, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True}" Margin="0,0,0,8"/>
+
+            <TextBlock Text="Autor"/>
+            <TextBox Text="{Binding WybranaKsiazka.Autor, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True}" Margin="0,0,0,8"/>
+
+            <TextBlock Text="Rok wydania"/>
+            <TextBox Text="{Binding WybranaKsiazka.RokWydania, TargetNullValue='', ValidatesOnNotifyDataErrors=True}" Margin="0,0,0,8"/>
+
+            <TextBlock Text="Kategoria"/>
+            <ComboBox ItemsSource="{Binding Kategorie}"
+                  DisplayMemberPath="Nazwa"
+                  SelectedValuePath="Id"
+                  SelectedValue="{Binding WybranaKsiazka.KategoriaId}"
+                  Margin="0,0,0,8"/>
+
+            <CheckBox Content="Przeczytana" IsChecked="{Binding WybranaKsiazka.Przeczytana}"/>
+            <!-- 3.4 panel buttonow -->
+            <StackPanel>
+                <Button Content="Dodaj" Command="{Binding DodajCommand}" Width="100" Margin="0,8,0,0"/>
+                <Button Content="Zapisz" Command="{Binding ZapiszCommand}" Width="100" Margin="0,8,0,0"/>
+                <Button Content="Usun" Command="{Binding UsunCommand}" Width="100" Margin="0,8,0,0"/>
+                <Button Content="Odswiez" Command="{Binding OdswiezCommand}" Width="100" Margin="0,8,0,0"/>
+            </StackPanel>
+        </StackPanel>
+        <StatusBar Grid.Row="1" Grid.Column="2" Margin="0, 8, 0, 0">
+            <TextBlock Text="{Binding Komunikat}"/>
+        </StatusBar>
+    </Grid>
+</Window>
