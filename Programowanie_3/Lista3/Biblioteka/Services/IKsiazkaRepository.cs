@@ -6,7 +6,7 @@ namespace Biblioteka.Services
     {
         Task<IReadOnlyList<Ksiazka>> GetAllAsync();
         Task<Ksiazka?> GetByIdAsync(int id);
-        Task<int> AddSync(Ksiazka k);
+        Task<int> AddAsync(Ksiazka k);
         Task UpdateAsync(Ksiazka k);
         Task DeleteAsync(int id);
     }

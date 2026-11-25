@@ -21,11 +21,12 @@ namespace Biblioteka.ViewModels
         bez NotifyCanExecuteChangedFor przyczisk Zapisz nie zmienia stanu po zaznaczeniu/odznaczeniu ksiazki, bo toolKit nie uzywa CommandManager
         */
 
-        private readonly InMemoryKsiazkaRepository ksiazkaRepo;
-        private readonly InMemoryKategoriaRepository kategoriaRepo;
+        private readonly IKsiazkaRepository ksiazkaRepo;
+        private readonly IKategoriaRepository kategoriaRepo;
 
-        //VM dostaje repo z zewnatrz, sam ich nie tworzy
-        public MainVM(InMemoryKsiazkaRepository ksiazkaRepo, InMemoryKategoriaRepository kategoriaRepo)
+        // VM dostaje repo z zewnatrz przez interfejs, sam ich nie tworzy.
+        // Nie wie, skad pochodza dane - zrodlo mozna podmienic w App.xaml.cs.
+        public MainVM(IKsiazkaRepository ksiazkaRepo, IKategoriaRepository kategoriaRepo)
         {
             this.ksiazkaRepo = ksiazkaRepo;
             this.kategoriaRepo = kategoriaRepo;
