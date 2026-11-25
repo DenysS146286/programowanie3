@@ -2,7 +2,7 @@
 
 namespace Biblioteka.Services
 {
-    internal interface IKategoriaRepository
+    public interface IKategoriaRepository
     {
         Task<IReadOnlyList<Kategoria>> GetAllAsync();
     }

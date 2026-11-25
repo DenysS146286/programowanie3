@@ -2,7 +2,7 @@
 
 namespace Biblioteka.Models
 {
-    internal partial class Ksiazka : ObservableObject
+    public partial class Ksiazka : ObservableObject
     {
         // ksiazke edetyjemy w apce, wiec ona i musze powiadamiac o zmianich
         // np zaznaczamy przeczytana s widok musi sie odswiezyc

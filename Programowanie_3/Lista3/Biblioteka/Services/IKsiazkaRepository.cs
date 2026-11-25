@@ -2,7 +2,7 @@
 
 namespace Biblioteka.Services
 {
-    internal interface IKsiazkaRepository
+    public interface IKsiazkaRepository
     {
         Task<IReadOnlyList<Ksiazka>> GetAllAsync();
         Task<Ksiazka?> GetByIdAsync(int id);
