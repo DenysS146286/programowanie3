@@ -51,21 +51,42 @@ namespace Biblioteka.ViewModels
             WybranaKsiazka = Ksiazki.FirstOrDefault(k => k.Id == nowa.Id);
         }
 
-        [RelayCommand(CanExecute = nameof(CzyWybranoKsiazke))]
+        // 4
+        [RelayCommand(CanExecute = nameof(CzyMoznaZapisac))]
         private async Task Zapisz()
         {
+            WybranaKsiazka!.Waliduj(); // ValidateAllProperties
+            if (WybranaKsiazka.HasErrors) return;
+
             await ksiazkaRepo.UpdateAsync(WybranaKsiazka!);
             await Odswiez();
         }
 
-        [RelayCommand(CanExecute = nameof(CzyWybranoKsiazke))]
+        [RelayCommand(CanExecute = nameof(CzyMoznaUsunac))]
         private async Task Usun()
         {
             await ksiazkaRepo.DeleteAsync(WybranaKsiazka!.Id);
             await Odswiez();
         }
 
-        private bool CzyWybranoKsiazke() { return WybranaKsiazka != null; }
+        private bool CzyMoznaZapisac() { 
+            return WybranaKsiazka != null && !WybranaKsiazka.HasErrors; 
+        }
+        // gdy zmienia sie WybranaKsiazka, nasluchujemy jej bledow walidacji,
+        // zeby przycisk Zapisz szarzal od razu przy blendym polu
+
+        partial void OnWybranaKsiazkaChanged(Ksiazka? oldValue, Ksiazka? newValue)
+        {
+            if (oldValue != null) oldValue.ErrorsChanged -= BlendyZmienone;
+            if (newValue != null) newValue.ErrorsChanged += BlendyZmienone;
+        }
+
+        private void BlendyZmienone(object? sender, System.ComponentModel.DataErrorsChangedEventArgs e)
+        {
+            ZapiszCommand.NotifyCanExecuteChanged();
+        }
+
+        private bool CzyMoznaUsunac() { return WybranaKsiazka != null; }
 
         /* wnioski z Etapu 1:
         - generator zrobil publiczna wlasciwosc WybranaKsiazka z get/set, ktora sprawdza czy wartosc sie zmienila i wywoluje OnPropertyChanged

@@ -30,7 +30,7 @@ namespace Biblioteka.Models
         // 4.2 - gorna (biezacy rok) nie jest stala -> [CustomValidation]
         [ObservableProperty]
         [NotifyDataErrorInfo]
-        [Range(1450, int.MaxValue, ErrorMessage = "ograniczenie roku wydania od \r\n1450")]
+        [Range(1450, int.MaxValue, ErrorMessage = "Rok nie moze byc mniejszy niz 1450")]
         [CustomValidation(typeof(Ksiazka), nameof(SprawdzRok))]
         private int? rokWydania;
 
@@ -50,5 +50,7 @@ namespace Biblioteka.Models
                 return new ValidationResult("Rok nie moze byc z przyszlosci");
             return ValidationResult.Success; // null chyba OK?
         }
+        //ValidateAllProperties jest protected, wiec VM wola go przez ta metode (4.3)
+        public void Waliduj() => ValidateAllProperties();
     }
 }
