@@ -31,8 +31,12 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/> 
+        </Grid.RowDefinitions>
 
-        <!-- 3.2 lista ksiazek -->
+            <!-- 3.2 lista ksiazek -->
         <ListView Grid.Column="0"
         ItemsSource="{Binding Ksiazki}"
         SelectedItem="{Binding WybranaKsiazka}"
@@ -78,5 +82,8 @@
                 <Button Content="Odswiez" Command="{Binding OdswiezCommand}" Width="100" Margin="0,8,0,0"/>
             </StackPanel>
         </StackPanel>
+        <StatusBar Grid.Row="1" Grid.Column="2" Margin="0, 8, 0, 0">
+            <TextBlock Text="{Binding Komunikat}"/>
+        </StatusBar>
     </Grid>
 </Window>

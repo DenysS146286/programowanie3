@@ -6,6 +6,8 @@ namespace Biblioteka.Services
     {
         private readonly List<Ksiazka> ksiazki = DaneStartowe.Ksiazki();
         private readonly List<Kategoria> kategorie = DaneStartowe.Kategorie();
+        // 4.7 - tryb tesstowy: AddSync rzuca wyjatek, zeby sprawdzic try/catch w MainVM
+        public bool SymulacjaBlad { get; set; }
 
         /*
         zadanie 2.5 odczyt zwraca kopie
@@ -32,6 +34,8 @@ namespace Biblioteka.Services
 
         public Task<IReadOnlyList<Ksiazka>> GetAllAsync()
         {
+            if (SymulacjaBlad)
+                throw new InvalidOperationException("Symulacja blad warstwy danych");
             IReadOnlyList<Ksiazka> wynik = ksiazki.Select(Kopia).ToList();
             return Task.FromResult(wynik);
         }
