@@ -1,5 +1,4 @@
-﻿
-using System.Windows;
+﻿using System.Windows;
 
 namespace Lista2
 {
@@ -9,8 +8,10 @@ namespace Lista2
         {
             base.OnStartup(e);
 
-            Gracz1 okno = new Gracz1();
-            okno.Show();
+            GraStatki gra = new GraStatki();
+
+            new GraczOkno(new GraczWidok(gra, 0)).Show();
+            new GraczOkno(new GraczWidok(gra, 1)).Show();
         }
     }
 }

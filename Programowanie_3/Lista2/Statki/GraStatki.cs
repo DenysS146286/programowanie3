@@ -1,96 +1,99 @@
-﻿
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
+
 namespace Lista2
 {
-    public class GraStatki
+    public class GraStatki : INotifyPropertyChanged
     {
-        public bool[,] Statki = new bool[2, 100];
-        public bool[,] Strzaly = new bool[2, 100];
+        public event PropertyChangedEventHandler? PropertyChanged;
 
-        public int AktualnyGracz = 1;
-        public int[] Trafienia = new int[2];
+        // Stany pola na planszy
+        public const int Puste = 0;
+        public const int Statek = 1;
+        public const int Pudlo = 2;
+        public const int Trafienie = 3;
 
-        public bool Koniec = false;
-        public int Zwyciezca = 0;
+        // Plansze[0] - plansza gracza 1, Plansze[1] - plansza gracza 2
+        public ObservableCollection<int>[] Plansze =
+        {
+            new ObservableCollection<int>(new int[100]),
+            new ObservableCollection<int>(new int[100])
+        };
+
+        private int _aktualnyGracz = 0;
+
+        // 0 albo 1
+        public int AktualnyGracz
+        {
+            get { return _aktualnyGracz; }
+            private set
+            {
+                _aktualnyGracz = value;
+                OnPropertyChanged("AktualnyGracz");
+            }
+        }
+
+        private bool _koniec = false;
+
+        public bool Koniec
+        {
+            get { return _koniec; }
+            private set
+            {
+                _koniec = value;
+                OnPropertyChanged("Koniec");
+            }
+        }
+
+        public int Zwyciezca { get; private set; } = -1;
 
         public void ZmienStatek(int gracz, int numerPola)
         {
             if (Koniec)
                 return;
 
-            // Nie mozna zmienic statku,
-            // jezeli przeciwnik juz strzelal w to pole.
-            if (Strzaly[1 - gracz, numerPola])
-                return;
+            var plansza = Plansze[gracz];
 
-            Statki[gracz, numerPola] =
-                !Statki[gracz, numerPola];
+            // Nie mozna zmieniac pola, w ktore przeciwnik juz strzelal.
+            if (plansza[numerPola] == Puste)
+                plansza[numerPola] = Statek;
+            else if (plansza[numerPola] == Statek)
+                plansza[numerPola] = Puste;
         }
 
         public void Strzal(int gracz, int numerPola)
         {
-            if (Koniec || AktualnyGracz != gracz + 1)
+            if (Koniec || AktualnyGracz != gracz)
                 return;
 
-            if (Strzaly[gracz, numerPola])
+            var planszaPrzeciwnika = Plansze[1 - gracz];
+
+            if (planszaPrzeciwnika[numerPola] == Pudlo ||
+                planszaPrzeciwnika[numerPola] == Trafienie)
                 return;
 
-            Strzaly[gracz, numerPola] = true;
-
-            if (Statki[1 - gracz, numerPola])
+            if (planszaPrzeciwnika[numerPola] == Statek)
             {
-                Trafienia[gracz]++;
+                planszaPrzeciwnika[numerPola] = Trafienie;
 
-                int liczbaStatkow = 0;
-
-                for (int i = 0; i < 100; i++)
+                if (!planszaPrzeciwnika.Contains(Statek))
                 {
-                    if (Statki[1 - gracz, i])
-                        liczbaStatkow++;
-                }
-
-                if (Trafienia[gracz] == liczbaStatkow &&
-                    liczbaStatkow > 0)
-                {
+                    Zwyciezca = gracz;
                     Koniec = true;
-                    Zwyciezca = gracz + 1;
+                    return;
                 }
             }
-
-            if (!Koniec)
-                AktualnyGracz = 3 - AktualnyGracz;
-        }
-
-        // Stan pola na mojej planszy.
-        public string PobierzStanMojejPlanszy(
-            int gracz, int numerPola)
-        {
-            if (Strzaly[1 - gracz, numerPola])
+            else
             {
-                if (Statki[gracz, numerPola])
-                    return "Hit";
-
-                return "Miss";
+                planszaPrzeciwnika[numerPola] = Pudlo;
             }
 
-            if (Statki[gracz, numerPola])
-                return "Ship";
-
-            return "Empty";
+            AktualnyGracz = 1 - AktualnyGracz;
         }
 
-        // Stan pola na planszy przeciwnika.
-        public string PobierzStanPola(
-            int gracz, int numerPola)
+        void OnPropertyChanged(string nazwa)
         {
-            if (Strzaly[gracz, numerPola])
-            {
-                if (Statki[1 - gracz, numerPola])
-                    return "Hit";
-
-                return "Miss";
-            }
-
-            return "Empty";
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nazwa));
         }
     }
 }
