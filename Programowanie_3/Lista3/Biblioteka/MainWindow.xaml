@@ -5,8 +5,52 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Biblioteka"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Loaded="Window_Loaded"
+        Title="Biblioteka" Height="500" Width="900" FontSize="14">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
+        <!-- 3.2 lista ksiazek -->
+        <ListView Grid.Column="0"
+        ItemsSource="{Binding Ksiazki}"
+        SelectedItem="{Binding WybranaKsiazka}"
+        Margin="0,0,10,0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                <Run Text="{Binding Tytul}" FontWeight="Bold"/>
+                <Run Text=" - "/>
+                <Run Text="{Binding Autor}"/>
+                <Run Text=" ("/>
+                <Run Text="{Binding KategoriaNazwa}"/>
+                <Run Text=")"/>
+                    </TextBlock>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <!-- 3.3 panel szczegolow (master-detail) -->
+        <StackPanel Grid.Column="1">
+            <TextBlock Text="Tytul"/>
+            <TextBox Text="{Binding WybranaKsiazka.Tytul, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,8"/>
+
+            <TextBlock Text="Autor"/>
+            <TextBox Text="{Binding WybranaKsiazka.Autor, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,8"/>
+
+            <TextBlock Text="Rok wydania"/>
+            <TextBox Text="{Binding WybranaKsiazka.RokWydania, TargetNullValue=''}" Margin="0,0,0,8"/>
+
+            <TextBlock Text="Kategoria"/>
+            <ComboBox ItemsSource="{Binding Kategorie}"
+                  DisplayMemberPath="Nazwa"
+                  SelectedValuePath="Id"
+                  SelectedValue="{Binding WybranaKsiazka.KategoriaId}"
+                  Margin="0,0,0,8"/>
+
+            <CheckBox Content="Przeczytana" IsChecked="{Binding WybranaKsiazka.Przeczytana}"/>
+        </StackPanel>
     </Grid>
 </Window>

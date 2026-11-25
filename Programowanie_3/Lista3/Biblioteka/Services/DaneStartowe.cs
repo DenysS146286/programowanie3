@@ -14,20 +14,22 @@ namespace Biblioteka.Services
                 new Kategoria { Id = 4, Nazwa = "Historia" }
             };
         }
-        public static List<Ksiazka> Ksiazki() {
+        public static List<Ksiazka> Ksiazki()
+        {
+            // ksiazki bez RokWydania maja null (zadanie 2.3)
             return new List<Ksiazka>
             {
-                new Ksiazka { Id = 1, Tytul = "Wiedzmin", Autor = "Andrzej S.", RokWydania = 1990, KategoriaId = 1, Przeczytana = true },
-                new Ksiazka { Id = 2, Tytul = "X", Autor = "W S.", RokWydania = 1937, KategoriaId = 1, Przeczytana = true },
-                new Ksiazka { Id = 3, Tytul = "Y", Autor = "E S.", RokWydania = 1965, KategoriaId = 1, Przeczytana = false },
-                new Ksiazka { Id = 4, Tytul = "Z", Autor = "Q S.", RokWydania = 1934, KategoriaId = 2, Przeczytana = false },
-                new Ksiazka { Id = 5, Tytul = "C", Autor = "R S.", RokWydania = 1902, KategoriaId = 2, Przeczytana = true },
-                new Ksiazka { Id = 6, Tytul = "B", Autor = "T S.", RokWydania = null, KategoriaId = 2, Przeczytana = false },
-                new Ksiazka { Id = 7, Tytul = "N", Autor = "Y S.", RokWydania = 2008, KategoriaId	= 3, Przeczytana = false },
-                new Ksiazka { Id	= 8, Tytul	= "A", Autor	= "U S.", RokWydania	= 1990, KategoriaId	= 3, Przeczytana	= true },
-                new Ksiazka { Id = 9, Tytul = "S", Autor = "I S.", RokWydania = null, KategoriaId = 3, Przeczytana = false },
-                new Ksiazka { Id = 10, Tytul = "D", Autor = "H S.", RokWydania = 1981, KategoriaId = 4, Przeczytana = false },
-                new Ksiazka { Id = 11, Tytul = "F", Autor = "G S.", RokWydania = null, KategoriaId = 4, Przeczytana = false }
+                new Ksiazka { Id = 1,  Tytul = "Wiedzmin", Autor = "Sapkowski", RokWydania = 1990, KategoriaId = 1, Przeczytana = true },
+                new Ksiazka { Id = 2,  Tytul = "Hobbit",   Autor = "Tolkien",   RokWydania = 1937, KategoriaId = 1, Przeczytana = true },
+                new Ksiazka { Id = 3,  Tytul = "Solaris",  Autor = "Lem",       RokWydania = 1961, KategoriaId = 1 },
+                new Ksiazka { Id = 4,  Tytul = "Morderstwo w Orient Expressie", Autor = "Christie", RokWydania = 1934, KategoriaId = 2 },
+                new Ksiazka { Id = 5,  Tytul = "Pies Baskerville'ow", Autor = "Doyle", RokWydania = 1902, KategoriaId = 2, Przeczytana = true },
+                new Ksiazka { Id = 6,  Tytul = "Kryminal bez daty", Autor = "Nieznany", KategoriaId = 2 },
+                new Ksiazka { Id = 7,  Tytul = "Czysty kod", Autor = "Martin", RokWydania = 2008, KategoriaId = 3 },
+                new Ksiazka { Id = 8,  Tytul = "C# w pigulce", Autor = "Albahari", KategoriaId = 3 },
+                new Ksiazka { Id = 9,  Tytul = "Pragmatyczny programista", Autor = "Hunt", RokWydania = 1999, KategoriaId = 3, Przeczytana = true },
+                new Ksiazka { Id = 10, Tytul = "Historia Polski", Autor = "Davies", RokWydania = 1981, KategoriaId = 4 },
+                new Ksiazka { Id = 11, Tytul = "Notatki z historii", Autor = "Anonim", KategoriaId = 4 }
             };
         }
     }
