@@ -8,25 +8,7 @@ namespace Biblioteka.ViewModels
 {
     public partial class MainVM : ObservableObject
     {
-        [ObservableProperty] private ObservableCollection<Ksiazka> ksiazki = new();
-        [ObservableProperty] private ObservableCollection<Kategoria> kategorie = new();
-        [ObservableProperty][NotifyCanExecuteChangedFor(nameof(ZapiszCommand))] private Ksiazka? wybranaKsiazka; // daje to public wlasciwosc WybranaKsiazka
-        [RelayCommand] private async Task Odswiez() {
-            Ksiazki = new ObservableCollection<Ksiazka>(await ksiazkaRepo.GetAllAsync());
-            Kategorie = new ObservableCollection<Kategoria>(await kategoriaRepo.GetAllAsync());
-        } // generator robi z tego OdzswiezCommand
-        [RelayCommand(CanExecute = nameof(CzyWybranoKsiazke))] private void Zapisz() { } // generator robi z tego ZapiszCommand
-        private bool CzyWybranoKsiazke() { return WybranaKsiazka != null; }
-
-        /*wnioski z Etapu 1:
-        - generator zrobiw publiczna wlasciwosc WybranaKsiazka z get/set, ktora sprawdza czy wartosc sie zmienila i wywoluje OnPropertyChanged
-        - wlasciwosc OdzswiezCommand i ZapiszCommand typu IRelayCommand zamiast wlasney klasy RealayCommand
-        - przy zmianie wlasciwosci WybranaKsiazka wywoluje ZapiszCommand.NotifyCanExecuteChangedFor(nameof(ZapiszCommand))]
-
-        Zadanie 1.5:
-        bez NotifyCanExecuteChangedFor przyczisk Zapisz nie zmienia stanu po zaznaczeniu/odznaczeniu ksiazki, bo toolKit nie uzywa CommandManager
-        */
-
+        // ===== Repozytoria =====
         private readonly IKsiazkaRepository ksiazkaRepo;
         private readonly IKategoriaRepository kategoriaRepo;
 
@@ -37,5 +19,64 @@ namespace Biblioteka.ViewModels
             this.ksiazkaRepo = ksiazkaRepo;
             this.kategoriaRepo = kategoriaRepo;
         }
+
+        // ===== Wlasciwosci (generator robi z pol publiczne wlasciwosci) =====
+        [ObservableProperty] private ObservableCollection<Ksiazka> ksiazki = new();
+        [ObservableProperty] private ObservableCollection<Kategoria> kategorie = new();
+
+        [ObservableProperty]
+        [NotifyCanExecuteChangedFor(nameof(ZapiszCommand))]
+        [NotifyCanExecuteChangedFor(nameof(UsunCommand))]
+        private Ksiazka? wybranaKsiazka;
+
+        // ===== Komendy (generator robi z metod XxxCommand) =====
+        [RelayCommand]
+        private async Task Odswiez()
+        {
+            Ksiazki = new ObservableCollection<Ksiazka>(await ksiazkaRepo.GetAllAsync());
+            Kategorie = new ObservableCollection<Kategoria>(await kategoriaRepo.GetAllAsync());
+        }
+
+        [RelayCommand]
+        private async Task Dodaj()
+        {
+            var nowa = new Ksiazka
+            {
+                Tytul = "Nowa ksiazka",
+                Autor = "?",
+                KategoriaId = Kategorie.FirstOrDefault()?.Id ?? 1
+            };
+            await ksiazkaRepo.AddAsync(nowa);
+            await Odswiez();
+            WybranaKsiazka = Ksiazki.FirstOrDefault(k => k.Id == nowa.Id);
+        }
+
+        [RelayCommand(CanExecute = nameof(CzyWybranoKsiazke))]
+        private async Task Zapisz()
+        {
+            await ksiazkaRepo.UpdateAsync(WybranaKsiazka!);
+            await Odswiez();
+        }
+
+        [RelayCommand(CanExecute = nameof(CzyWybranoKsiazke))]
+        private async Task Usun()
+        {
+            await ksiazkaRepo.DeleteAsync(WybranaKsiazka!.Id);
+            await Odswiez();
+        }
+
+        private bool CzyWybranoKsiazke() { return WybranaKsiazka != null; }
+
+        /* wnioski z Etapu 1:
+        - generator zrobil publiczna wlasciwosc WybranaKsiazka z get/set, ktora sprawdza czy wartosc sie zmienila i wywoluje OnPropertyChanged
+        - wlasciwosci OdswiezCommand i ZapiszCommand typu IRelayCommand zamiast wlasnej klasy RelayCommand
+        - przy zmianie WybranaKsiazka generator wywoluje ZapiszCommand.NotifyCanExecuteChanged()
+ 
+        Zadanie 1.5:
+        bez NotifyCanExecuteChangedFor przycisk Zapisz nie zmienia stanu po zaznaczeniu/odznaczeniu ksiazki, bo Toolkit nie uzywa CommandManager
+ 
+        Zadanie 3.6:
+        metody zwracajace Task -> generator robi IAsyncRelayCommand
+        */
     }
 }
